@@ -33,7 +33,20 @@ func NewAuthController(router *gin.Engine, usecase usecase.AuthUseCase) *AuthCon
 		router:  router,
 		usecase: usecase,
 	}
+	var sessions = make(map[string]bool)
+
 	rg := router.Group("/api/v1")
 	rg.POST("/customers/login", controller.loginHandler)
+
+	rg.POST("/customers/logout", func(c *gin.Context) {
+		sessionToken := c.GetHeader("Authorization")
+		if _, exists := sessions[sessionToken]; exists {
+			delete(sessions, sessionToken)
+			c.JSON(200, gin.H{"message": "Logged out successfully"})
+		} else {
+			c.JSON(401, gin.H{"message": "Invalid session or token"})
+		}
+	})
+
 	return &controller
 }
