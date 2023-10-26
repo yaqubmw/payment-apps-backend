@@ -41,7 +41,85 @@
 						}
 					}
 				},
-				"url": "{{EMPLOYEE-LEAVE-API}}/customers/login"
+				"url": "localhost:8888/api/v1/customers/login"
+			},
+			"response": []
+		},
+		{
+			"name": "add transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody)",
+							"",
+							"if (response && response.token) {",
+							"    pm.globals.set(\"enigma_laundry_token\", response.token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{enigma_laundry_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"customer_id\":  \"CustomerID\",\n\t\t\"merchant_id\": \"MerchantID\",\n\t\t\"amount\": 500000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8888/api/v1/transactions"
+			},
+			"response": []
+		},
+		{
+			"name": "transaction list / history",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = JSON.parse(responseBody)",
+							"",
+							"if (response && response.token) {",
+							"    pm.globals.set(\"enigma_laundry_token\", response.token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{enigma_laundry_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"customer_id\":  \"CustomerID\",\n\t\t\"merchant_id\": \"MerchantID\",\n\t\t\"amount\": 500000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8888/api/v1/transactions"
 			},
 			"response": []
 		},
@@ -80,7 +158,7 @@
 						}
 					}
 				},
-				"url": "{{EMPLOYEE-LEAVE-API}}/customers/logout"
+				"url": "localhost:8888/api/v1/customers/logout"
 			},
 			"response": []
 		}
