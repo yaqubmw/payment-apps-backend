@@ -18,7 +18,7 @@ This API using Go package:
 
  - Make sure your machine have Golang installed
  - Clone this repository to your machine.
- - Install all the package that mentioned ablove.
+ - Install all the package that mentioned above.
  - Create database and table based on `db.sql` file.
  - Go to application's directory
  - Run the application with terminal using `go run main.go`
