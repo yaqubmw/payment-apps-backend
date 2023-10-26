@@ -10,7 +10,6 @@ This API using Go package:
 -   [golang-jwt/jwt/v5](https://github.com/golang-jwt/jwt)
 -   [google/uuid](https://github.com/google/uuid)
 -   [joho/godotenv](https://github.com/joho/godotenv)
--   [sirupsen/logrus](https://github.com/sirupsen/logrus)
 -   [golang.org/x/crypto/bcrypt](https://pkg.go.dev/golang.org/x/crypto/bcrypt])
 -   [gorm.io/driver/postgresql](https://pkg.go.dev/gorm.io/driver/postgresql)
 -   [gorm.io/gorm](https://pkg.go.dev/gorm.io/gorm)
